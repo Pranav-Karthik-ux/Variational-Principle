@@ -32,16 +32,16 @@ By **minimizing \(E(a)\)**, we obtain the best possible approximation to the gro
 
 The Hamiltonian of the one-dimensional QHO is:
 
-\[
+$$
 \hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}
 + \frac12 m\omega^2 x^2.
-\]
+$$
 
 Its exact ground-state energy is:
 
-\[
+$$
 E_0 = \frac12 \hbar\omega.
-\]
+$$
 
 The exact ground-state wavefunction is a Gaussian, which makes the variational method using  
 a Gaussian trial function especially effective.
@@ -52,38 +52,38 @@ a Gaussian trial function especially effective.
 
 The chosen trial wavefunction is:
 
-\[
+$$
 \psi(x; a) = e^{-a x^2}, 
-\]
+$$
 
 where \( a \) is the variational parameter to be optimized. The wave function could be changed without altering the code.
 
 From this wavefunction, the following integrals are computed:
 
 - **Kinetic energy:**
-  \[
+  $$
   T(a) = -\frac{\hbar^2}{2m}
   \int \psi(x;a) \, \psi''(x;a)\, dx
-  \]
+  $$
 
 - **Potential energy:**
-  \[
+  $$
   V(a) =
   \frac12 m\omega^2
   \int x^2 \psi(x;a)^2 \, dx
-  \]
+  $$
 
 - **Normalization:**
-  \[
+  $$
   N(a) = \int \psi(x;a)^2 \, dx
-  \]
+  $$
 
 - **Total variational energy:**
-  \[
+  $$
   E(a) = \frac{T(a) + V(a)}{N(a)}.
-  \]
+  $$
 
-The goal is to find the value of \(a\) that minimizes \(E(a)\).
+The goal is to find the value of $a$ that minimizes $(E(a)$.
 
 ---
 
@@ -97,13 +97,13 @@ The script:
    - Kinetic and potential energy integrals  
    - Normalization integral  
    - Total energy expression  
-3. Evaluates the energy numerically for a range of values of the parameter \(a\)  
-4. Produces a plot of the variational energy as a function of \(a\)  
+3. Evaluates the energy numerically for a range of values of the parameter $a$  
+4. Produces a plot of the variational energy as a function of $a$
 5. Shows that the energy reaches a minimum at  
-   \[
+   $$
    E_{\text{min}} = \frac12
-   \]  
-   (for \( \hbar = m = \omega = 1 \)), which matches the exact ground-state energy.
+   $$  
+   when $\hbar = m = \omega = 1$.
 
 ---
 
