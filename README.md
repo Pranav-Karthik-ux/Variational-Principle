@@ -13,11 +13,7 @@ is plotted as a function of the variational parameter.
 ### 🔹 Variational Principle
 
 The variational principle states that for any normalized trial wavefunction  
-$$
-\[
-\psi(x; a),
-\]  
-$$
+$\psi(x; a)$ 
 depending on a parameter \(a\), the energy expectation value satisfies:
 
 \[
