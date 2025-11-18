@@ -20,8 +20,9 @@ $$
 E(a) = 
 \frac{\langle \psi(a) | \hat{H} | \psi(a) \rangle}
 {\langle \psi(a) | \psi(a) \rangle}
-\ge E_0,
+\ge E_0 ,
 $$
+
 where \(E_0\) is the true ground state energy.  
 By **minimizing \(E(a)\)**, we obtain the best possible approximation to the ground-state energy within the chosen trial family.
 
