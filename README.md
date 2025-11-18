@@ -7,14 +7,13 @@ Symbolic integration is performed to compute the energy expectation value, and t
 is plotted as a function of the variational parameter.
 
 ---
-
 ## 📘 Theory Overview
 
 ### 🔹 Variational Principle
 
 The variational principle states that for any normalized trial wavefunction  
-$\psi(x; a)$ 
-depending on a parameter \(a\), the energy expectation value satisfies:
+$\psi(x; a)$  
+depending on a parameter $a$, the expectation value of the energy satisfies:
 
 $$
 E(a) = 
@@ -23,28 +22,29 @@ E(a) =
 \ge E_0 ,
 $$
 
-where \(E_0\) is the true ground state energy.  
-By **minimizing \(E(a)\)**, we obtain the best possible approximation to the ground-state energy within the chosen trial family.
+where $E_0$ is the true ground-state energy.  
+Minimizing $E(a)$ gives the closest approximation to the ground-state energy  
+within the chosen trial family.
 
 ---
 
 ## 🔹 Quantum Harmonic Oscillator
 
-The Hamiltonian of the one-dimensional QHO is:
+The Hamiltonian of the one-dimensional harmonic oscillator is:
 
 $$
-\hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}
-+ \frac12 m\omega^2 x^2.
+\hat{H} = 
+- \frac{\hbar^2}{2m} \frac{d^2}{dx^2}
++ \frac12 m\omega^2 x^2 .
 $$
 
-Its exact ground-state energy is:
+The exact ground-state energy is:
 
 $$
-E_0 = \frac12 \hbar\omega.
+E_0 = \frac12 \hbar\omega .
 $$
 
-The exact ground-state wavefunction is a Gaussian, which makes the variational method using  
-a Gaussian trial function especially effective.
+The exact ground-state wavefunction is a Gaussian, which makes the variational method especially effective with a Gaussian trial function.
 
 ---
 
@@ -53,37 +53,40 @@ a Gaussian trial function especially effective.
 The chosen trial wavefunction is:
 
 $$
-\psi(x; a) = e^{-a x^2}, 
+\psi(x;a) = e^{-a x^2},
 $$
 
-where \( a \) is the variational parameter to be optimized. The wave function could be changed without altering the code.
+where $a$ is the variational parameter to be optimized.
 
-From this wavefunction, the following integrals are computed:
+From this wavefunction, the following quantities are computed:
 
-- **Kinetic energy:**
-  $$
-  T(a) = -\frac{\hbar^2}{2m}
-  \int \psi(x;a) \, \psi''(x;a)\, dx
-  $$
+### **Kinetic energy**
+$$
+T(a) = 
+- \frac{\hbar^2}{2m}
+\int \psi(x;a)\, \psi''(x;a)\, dx
+$$
 
-- **Potential energy:**
-  $$
-  V(a) =
-  \frac12 m\omega^2
-  \int x^2 \psi(x;a)^2 \, dx
-  $$
+### **Potential energy**
+$$
+V(a) =
+\frac12 m\omega^2
+\int x^2 \psi(x;a)^2 \, dx
+$$
 
-- **Normalization:**
-  $$
-  N(a) = \int \psi(x;a)^2 \, dx
-  $$
+### **Normalization**
+$$
+N(a) = 
+\int \psi(x;a)^2 dx
+$$
 
-- **Total variational energy:**
-  $$
-  E(a) = \frac{T(a) + V(a)}{N(a)}.
-  $$
+### **Total variational energy**
+$$
+E(a) = 
+\frac{T(a) + V(a)}{N(a)} .
+$$
 
-The goal is to find the value of $a$ that minimizes $(E(a)$.
+The value of $a$ that minimizes $E(a)$ gives the best approximation to the ground-state energy.
 
 ---
 
@@ -92,14 +95,11 @@ The goal is to find the value of $a$ that minimizes $(E(a)$.
 The script:
 
 1. Defines the Gaussian trial wavefunction  
-2. Symbolically calculates:
-   - The second derivative  
-   - Kinetic and potential energy integrals  
-   - Normalization integral  
-   - Total energy expression  
-3. Evaluates the energy numerically for a range of values of the parameter $a$  
-4. Produces a plot of the variational energy as a function of $a$
-5. Shows that the energy reaches a minimum at  
+2. Computes the kinetic energy, potential energy, and normalization integrals symbolically  
+3. Simplifies the full expression for the expectation value $E(a)$  
+4. Evaluates $E(a)$ numerically over a range of values of $a$  
+5. Produces a plot of $E(a)$ vs. $a$  
+6. Shows that the minimum occurs at  
    $$
    E_{\text{min}} = \frac12
    $$  
