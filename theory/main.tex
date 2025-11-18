@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{amsfonts}
+
+\title{Variational Principle Applied to the Quantum Harmonic Oscillator}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The variational principle is a powerful technique in quantum mechanics for approximating 
+energy eigenvalues when the Schr\"odinger equation cannot be solved exactly.  
+It guarantees that for any normalized trial wavefunction $\psi(a)$ depending on one or more 
+parameters $a$, the expectation value of the Hamiltonian satisfies
+\[
+E(a) = \frac{\mel{\psi(a)}{\hat{H}}{\psi(a)}}{\braket{\psi(a)}{\psi(a)}} \ge E_0 ,
+\]
+where $E_0$ is the true ground state energy.  
+By minimizing $E(a)$ with respect to the parameter(s), one obtains the closest possible 
+approximation to the ground state energy within the chosen trial space.
+
+\section{Quantum Harmonic Oscillator}
+
+The Hamiltonian of the one-dimensional harmonic oscillator is
+\[
+\hat{H} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac12 m\omega^2 x^2 .
+\]
+The exact ground state wavefunction is known to be Gaussian:
+\[
+\psi_0(x) = A e^{-\alpha x^2}, \qquad 
+\alpha = \frac{m\omega}{2\hbar},
+\]
+with ground state energy
+\[
+E_0 = \frac{1}{2}\hbar\omega.
+\]
+In the variational method, if one chooses a Gaussian trial function, one is guaranteed to 
+obtain the exact answer, because the true ground state is itself Gaussian.
+
+\section{Trial Wavefunction and Expectation Value}
+
+We choose a normalized trial wavefunction of the form
+\[
+\psi(x;a) = e^{-a x^2},
+\]
+where $a$ is a variational parameter.  
+The energy expectation value is
+\[
+E(a) = 
+\frac{
+\displaystyle \int_{-\infty}^{\infty} 
+\psi(x;a)\,\hat{H}\,\psi(x;a)\, dx
+}{
+\displaystyle \int_{-\infty}^{\infty} 
+\left|\psi(x;a)\right|^2 dx
+}.
+\]
+
+The kinetic energy contribution is
+\[
+T(a) =
+-\frac{\hbar^2}{2m} \int_{-\infty}^{\infty}
+\psi(x;a)\,\frac{d^2\psi(x;a)}{dx^2}\, dx ,
+\]
+and the potential energy term is
+\[
+V(a) =
+\frac12 m\omega^2 \int_{-\infty}^{\infty} x^2 
+\left|\psi(x;a)\right|^2 dx .
+\]
+The variational energy is then
+\[
+E(a) = T(a) + V(a).
+\]
+Minimizing $E(a)$ with respect to $a$ yields the best approximation.  
+For the harmonic oscillator, the minimum occurs exactly at
+\[
+a = \frac{m\omega}{2\hbar},
+\]
+and the energy equals the analytic result $E = \frac12 \hbar \omega$.
+
+\section{Explanation of the Python Code}
+
+The provided Python/SymPy code implements the steps described above:
+
+\begin{itemize}
+    \item \textbf{Trial wavefunction:}  
+    \[
+    f(x) = e^{-a x^2}
+    \]
+    expressed in SymPy as \verb|f = exp(-a*x**2)|.
+    
+    \item \textbf{Kinetic energy integral:}  
+    The second derivative is computed symbolically using \verb|diff| and inserted into
+    \[
+    T = \int f(x)\left(-\frac{\hbar^2}{2m}\frac{d^2 f}{dx^2}\right)\, dx .
+    \]
+
+    \item \textbf{Potential energy integral:}  
+    The potential function
+    \[
+    V(x) = \frac12 m\omega^2 x^2
+    \]
+    is multiplied by $f(x)^2$ and integrated symbolically.
+
+    \item \textbf{Total energy expectation value:}  
+    The code computes
+    \[
+    E(a) = \frac{T + V}{\int f(x)^2 dx}
+    \]
+    and simplifies it.
+
+    \item \textbf{Numerical evaluation:}  
+    A range of values for the variational parameter $a$ is generated, 
+    and the computed energy is plotted as a function of $a$.
+    
+    \item \textbf{Result:}  
+    The graph shows a minimum at the analytic value $E = \frac12$ (in units $\hbar=m=\omega=1$), demonstrating the variational principle.
+\end{itemize}
+
+\section{Conclusion}
+
+The variational method provides a systematic approximation to the ground state energy.  
+By choosing a Gaussian trial wavefunction for the harmonic oscillator, the method 
+reproduces the exact ground state energy because the Gaussian form is already exact.  
+The Python implementation computes the expectation value symbolically and verifies 
+the variational principle numerically by plotting $E(a)$ and showing its minimum.
+
+\end{document}
