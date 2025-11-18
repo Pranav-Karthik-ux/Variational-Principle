@@ -16,13 +16,12 @@ The variational principle states that for any normalized trial wavefunction
 $\psi(x; a)$ 
 depending on a parameter \(a\), the energy expectation value satisfies:
 
-\[
+$$
 E(a) = 
 \frac{\langle \psi(a) | \hat{H} | \psi(a) \rangle}
 {\langle \psi(a) | \psi(a) \rangle}
 \ge E_0,
-\]
-
+$$
 where \(E_0\) is the true ground state energy.  
 By **minimizing \(E(a)\)**, we obtain the best possible approximation to the ground-state energy within the chosen trial family.
 
